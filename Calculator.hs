@@ -3,7 +3,6 @@ module Calculator where
 import Token
 import Data.Maybe
 
-
 ------------------------------------------------------------------------------------------------------
 data Exp = Nil | Val Int | Bracket Exp
     | Branch Exp Opr Exp 

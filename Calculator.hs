@@ -47,7 +47,7 @@ parseExp str = case buildExp tokenizeStr of
         tokenizeStr = tokenize str
         noSpaceStr = filter (/=' ') str
 
--- | Takes an error and returns an error message accordingly
+-- Returns an error message corresponding to error code
 getErrorStr :: Error -> String
 getErrorStr error = case error of
     ErrorExp -> " Invalid Expression"
@@ -55,12 +55,6 @@ getErrorStr error = case error of
     TokenError -> " Invalid Operator or Character in Arithmetic Expression"
     OperatorError -> " Invalid arrangement of operators"
     ExpInBracketsError -> " Invalid Expression in Brackets"
-
--- | Takes an expression string and error position as Int value
--- and returns the same string with error highlighted
-showError :: String -> Int -> String
-showError str n = unlines $ fmap ("     "++) [str,(spaces ++ "^^^")]
-    where spaces = replicate (n) ' '
 
 -- Builds and returns arithmetic expression or error
 buildExp :: [Token] -> Either Error Exp
